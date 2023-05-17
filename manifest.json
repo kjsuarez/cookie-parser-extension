@@ -1,0 +1,35 @@
+{
+
+  "manifest_version": 2,
+  "name": "LendCache",
+  "version": "0.0.1",
+
+  "description": "sets and gets cookies from user input",
+
+  "icons": {
+    "48": "icons/icon_48.png"
+  },
+
+  "permissions": [
+    "tabs",
+    "cookies",
+    "<all_urls>"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/icon_32.png",
+    "default_title": "LendCache",
+    "default_popup": "popup/select_cache.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "browser-polyfill.js",
+        "content_scripts/chitchat.js"
+      ]
+    }
+  ]
+
+}
