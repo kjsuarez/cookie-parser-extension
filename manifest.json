@@ -26,8 +26,9 @@
     {
       "matches": ["<all_urls>"],
       "js": [
+        "node_modules/crypto-js/crypto-js.js",
         "browser-polyfill.js",
-        "content_scripts/chitchat.js"
+        "content_scripts/alert.js"
       ]
     }
   ]

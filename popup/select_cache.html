@@ -2,9 +2,12 @@
 <html>
   <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
     <script type="application/javascript" src="browser-polyfill.js"></script>
-    <link rel="stylesheet" href="button.css">
+    <script type="text/javascript" src="../node_modules/crypto-js/crypto-js.js"></script>
+    <link rel="stylesheet" href="popup.css">
   </head>
+
   <body>
     <h4>Cookie string</h4>
     <div class="loading" hidden>
@@ -14,10 +17,42 @@
     </div>
     
     <div class="loaded">
+      
+      <div class="flex-div">
+        <span class="material-symbols-outlined encrypt-symbol">
+          lock_open
+        </span>
+        <input class="tgl tgl-flip" id="cb5" type="checkbox"/>
+        <label class="tgl-btn encrypt-status-btn" data-tg-off="unencrypted" data-tg-on="encrypted" for="cb5"></label>  
+      </div>
+
       <textarea name="session_text" id="session_text" cols="30" rows="10"></textarea>
-      <button id="get-button">Get</button>
-      <button id="set-button">Set</button>
-      <button id="clear-button">Clear</button>
+      
+      <div class="encrypted" hidden>
+        <label for="passphrase-input">encryption passphrase</label>
+        <br>
+        <input id="passphrase-input" type="text">
+      </div>
+
+      <div class="warning-text">
+      </div>
+      <div>
+        <button id="get-button" title="save cookies to JSON string">
+          <span class="material-symbols-outlined">
+            upload
+            </span>
+        </button>
+        <button id="set-button" title="save text to cookies" disabled="true">
+          <span class="material-symbols-outlined">
+            download
+          </span></button>
+        <button id="clear-button" title="clear all cookies for this url">
+          <span class="material-symbols-outlined">
+            delete
+            </span>
+        </button>
+      </div>
+
     </div>
 
 
