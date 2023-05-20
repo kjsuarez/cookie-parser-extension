@@ -1,9 +1,19 @@
+
+html {
+  font-family: sans-serif;
+}
+
 button {
   height: 3em;
   width: 5em;
   outline: none;
   border: none;
   border-radius: 25px;
+}
+
+div {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 button.current {
@@ -43,6 +53,19 @@ h2 {
 h4 {
   color: #999;
 }
+
+#session_text {
+  height: 1em;
+}
+
+#session-text-label {
+  display: block;
+}
+
+#passphrase-input {
+  width: 15em;
+}
+
 
 .tgl {
   display: none;

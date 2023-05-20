@@ -1,0 +1,17 @@
+{
+  "name": "cache_plugin",
+  "version": "1.0.0",
+  "description": "Sets cookies from user input",
+  "main": "manifest.json",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webextension-polyfill": "^0.10.0"
+  },
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  }
+}

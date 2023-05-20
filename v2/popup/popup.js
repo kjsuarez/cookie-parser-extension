@@ -44,6 +44,7 @@ encrypt_status_change_button.onclick = function(e){
     document.querySelector('.encrypted').hidden = !encrypt_state
     encrypt_symbol.innerText = encrypt_state ? "lock" : "lock_open"
     checkValidJson(null)
+    session_text.placeholder = encrypt_state ? "Paste encrypted JSON here" : "Paste cookie JSON here"
 }
 
 getter_button.onclick = function(e){

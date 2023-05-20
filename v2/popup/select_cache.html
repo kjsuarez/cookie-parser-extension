@@ -9,7 +9,6 @@
   </head>
 
   <body>
-    <h4>Cookie string</h4>
     <div class="loading" hidden>
       <span class="material-symbols-outlined" >
         autorenew
@@ -26,10 +25,13 @@
         <label class="tgl-btn encrypt-status-btn" data-tg-off="unencrypted" data-tg-on="encrypted" for="cb5"></label>  
       </div>
 
-      <textarea name="session_text" id="session_text" cols="30" rows="10"></textarea>
-      
+      <div class="session-div">
+        <label for="session_text" id="session-text-label"> Cookie JSON: </label>
+        <textarea name="session_text" id="session_text" placeholder="Paste cookie JSON here" cols="25" rows="1"></textarea>
+      </div>
+
       <div class="encrypted" hidden>
-        <label for="passphrase-input">encryption passphrase</label>
+        <label for="passphrase-input">encryption passphrase:</label>
         <br>
         <input id="passphrase-input" type="text">
       </div>
@@ -42,7 +44,7 @@
             upload
             </span>
         </button>
-        <button id="set-button" title="save text to cookies" disabled="true">
+        <button id="set-button" title="save JSON string to cookies" disabled="true">
           <span class="material-symbols-outlined">
             download
           </span></button>
