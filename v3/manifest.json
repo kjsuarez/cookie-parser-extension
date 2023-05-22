@@ -15,7 +15,8 @@
 
   "permissions": [
     "tabs",
-    "cookies"
+    "cookies",
+    "downloads"
   ],
 
   "host_permissions": [

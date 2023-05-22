@@ -26,39 +26,64 @@
       </div>
 
       <div class="session-div">
-        <label for="session_text" id="session-text-label"> Cookie JSON: </label>
+        <label for="session_text" id="session-text-label"> cookies for this domain </label>
         <textarea name="session_text" id="session_text" placeholder="Paste cookie JSON here" cols="25" rows="1"></textarea>
       </div>
 
       <div class="encrypted" hidden>
         <label for="passphrase-input">encryption passphrase:</label>
         <br>
-        <input id="passphrase-input" type="text">
+        <input id="passphrase-input" type="text" placeholder="passphrase to encrypt/decrypt cookie string">
       </div>
 
       <div class="warning-text">
       </div>
       <div>
-        <button id="get-button" title="save cookies to JSON string">
-          <span class="material-symbols-outlined">
+        <button id="get-button" title="export cookies to text">
+          <!-- <span class="material-symbols-outlined">
             upload
-            </span>
-        </button>
-        <button id="set-button" title="save JSON string to cookies" disabled="true">
+          </span> -->
           <span class="material-symbols-outlined">
-            download
-          </span></button>
+            cookie
+          </span>
+          <span class="material-symbols-outlined">
+            east
+          </span>
+          <span class="material-symbols-outlined">
+            description
+          </span>
+        </button>
+        <button id="set-button" title="import cookies from textbox" disabled="true">
+          <!-- <span class="material-symbols-outlined">
+            publish
+          </span> -->
+          <span class="material-symbols-outlined">
+            description
+          </span>
+          <span class="material-symbols-outlined">
+            east
+          </span>
+          <span class="material-symbols-outlined">
+            cookie
+          </span>
+        </button>
+      </div>
+      <div>
         <button id="clear-button" title="clear all cookies for this url">
           <span class="material-symbols-outlined">
             delete
             </span>
         </button>
+        <button id="save-button" title="clear all cookies for this url">
+          <span class="material-symbols-outlined">
+            save
+            </span>
+        </button>
       </div>
-
     </div>
 
 
     <script type="application/javascript" src="../browser-polyfill.js"></script>
-    <script src="popup.js"></script>
+    <script type="module" src="./popup.js"></script>
   </body>
 </html>

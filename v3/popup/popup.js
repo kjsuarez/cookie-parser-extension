@@ -1,6 +1,10 @@
+import { downloadJson } from "./file_manager.js";
+
 let getter_button = document.querySelector('#get-button');
 let setter_button = document.querySelector('#set-button');
 let clear_button = document.querySelector('#clear-button');
+let save_button = document.querySelector('#save-button');
+
 let encrypt_symbol = document.querySelector('.encrypt-symbol')
 let session_text = document.querySelector('#session_text')
 let warning_text = document.querySelector(".warning-text") 
@@ -32,6 +36,10 @@ function checkValidJson(e) {
         }  
     }
     
+    if (session_text.value.length == 0) {
+        warning_text.innerHTML = ""
+        setter_button.disabled = true
+    }
 }
 
 function getActiveTab() {
@@ -47,23 +55,33 @@ encrypt_status_change_button.onclick = function(e){
     session_text.placeholder = encrypt_state ? "Paste encrypted JSON here" : "Paste cookie JSON here"
 }
 
-getter_button.onclick = function(e){
-    getActiveTab().then((tabs) => {
-        browser.cookies.getAll({
-            url: tabs[0].url
-        }).then( (cookies) => {
-            console.log(cookies);
-            let cookie_str = JSON.stringify(cookies)
-            if (encrypt_state) {
-                let crypt_cookies = CryptoJS.AES.encrypt(cookie_str, passphrase).toString();
-                session_text.innerHTML = crypt_cookies
-                console.log(`encrypting with ${passphrase}` );
-            } else {
-                session_text.innerHTML = cookie_str
-            }
-            checkValidJson(null)
+function getCookieString() {
+    let resp = new Promise((resolve) => {
+        getActiveTab().then((tabs) => {
+            browser.cookies.getAll({
+                url: tabs[0].url
+            }).then( (cookies) => {
+                console.log(cookies);
+                let cookie_str = JSON.stringify(cookies)
+                resolve(cookie_str);
+            });        
         });        
     });
+    return resp
+}
+
+getter_button.onclick = function(e){
+    let cookie_str = getCookieString().then((cookie_str) => {
+        if (encrypt_state) {
+            let crypt_cookies = CryptoJS.AES.encrypt(cookie_str, passphrase).toString();
+            session_text.innerHTML = crypt_cookies
+            console.log(`encrypting with ${passphrase}` );
+        } else {
+            session_text.innerHTML = cookie_str
+        }
+        checkValidJson(null) 
+    });
+       
 }
 
 setter_button.onclick = function(e){
@@ -130,4 +148,9 @@ clear_button.onclick = function(e){
         
     });
 }
-  
+
+save_button.onclick = function(e){
+    let cookie_str = getCookieString().then((cookie_str) => {
+        downloadJson(cookie_str)
+    });
+}

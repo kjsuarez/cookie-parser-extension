@@ -8,10 +8,11 @@ body {
 
 button {
   height: 3em;
-  width: 5em;
+  width: 7em;
   outline: none;
   border: none;
   border-radius: 25px;
+  letter-spacing: -5px;
 }
 
 div {
@@ -59,6 +60,12 @@ h4 {
 
 #session_text {
   height: 1em;
+  width: 20em;
+  border: none;
+  border-radius: .25rem;
+  resize: vertical;
+  /* outline: none; */
+  /* resize: none; */
 }
 
 #session-text-label {
@@ -66,7 +73,13 @@ h4 {
 }
 
 #passphrase-input {
-  width: 15em;
+  width: 20em;
+  border: none;
+  border-radius: .25rem;
+}
+
+.warning-text {
+  color: #c11e02;
 }
 
 
