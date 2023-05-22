@@ -4,6 +4,7 @@ let getter_button = document.querySelector('#get-button');
 let setter_button = document.querySelector('#set-button');
 let clear_button = document.querySelector('#clear-button');
 let save_button = document.querySelector('#save-button');
+let upload_button = document.querySelector('#upload-button');
 
 let encrypt_symbol = document.querySelector('.encrypt-symbol')
 let session_text = document.querySelector('#session_text')
@@ -74,10 +75,11 @@ getter_button.onclick = function(e){
     let cookie_str = getCookieString().then((cookie_str) => {
         if (encrypt_state) {
             let crypt_cookies = CryptoJS.AES.encrypt(cookie_str, passphrase).toString();
-            session_text.innerHTML = crypt_cookies
+            session_text.value = crypt_cookies
             console.log(`encrypting with ${passphrase}` );
         } else {
-            session_text.innerHTML = cookie_str
+            console.log("can you see me now?");
+            session_text.value = cookie_str
         }
         checkValidJson(null) 
     });
@@ -89,6 +91,7 @@ setter_button.onclick = function(e){
     document.querySelector('.loaded').hidden = true
     getActiveTab().then((tabs) => {
         var cookie_text = session_text.value
+        console.log(`cookie string: ${cookie_text}`)
         if (encrypt_state) {
             try {
                 passphrase = passphrase_input.value
@@ -110,7 +113,7 @@ setter_button.onclick = function(e){
             alert(`Your JSON string is malformed, try using a JSON linter on your input text. (${error})`)
         }
 
-        for(cookie of cookie_ary){
+        for(let cookie of cookie_ary){
             Object.assign(cookie, {url: tabs[0].url})
             delete cookie.hostOnly
             delete cookie.session

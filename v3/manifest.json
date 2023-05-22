@@ -1,10 +1,10 @@
 {
 
   "manifest_version": 3,
-  "name": "LendCache",
-  "version": "0.1.0",
+  "name": "Cookie Serial",
+  "version": "0.2.1",
 
-  "description": "Allows user to serialize cookies",
+  "description": "Makes it easy to get, serialize, and set browser cookies for a givent domain.",
 
   "icons": {
     "128": "icons/icon_128.png",

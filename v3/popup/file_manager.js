@@ -9,7 +9,7 @@ function downloadJson(str) {
     var file_url = URL.createObjectURL(file)
     let downloading = browser.downloads.download({
         url: file_url,
-        saveAs: true
+        filename: "cookies.json"
     })
 
     downloading.then((id) => {
