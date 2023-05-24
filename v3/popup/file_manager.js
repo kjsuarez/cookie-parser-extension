@@ -1,9 +1,5 @@
 export { downloadJson }
 
-function test() {
-    console.log("I'm here");
-}
-
 function downloadJson(str) {
     var file = new File([str], "cookies.json")
     var file_url = URL.createObjectURL(file)

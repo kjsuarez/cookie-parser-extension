@@ -15,9 +15,16 @@ let warning_text = document.querySelector(".warning-text")
 let passphrase = self.crypto.randomUUID();
 let passphrase_input = document.querySelector('#passphrase-input')
 passphrase_input.value = passphrase
-passphrase_input.addEventListener("keyup", updatePassphrase);
-function updatePassphrase(e) {
+// passphrase_input.addEventListener("input", updatePassphrase);
+// function updatePassphrase(e) {
+//     passphrase = passphrase_input.value
+// }
+
+passphrase_input.oninput = function(e) {
     passphrase = passphrase_input.value
+    getCookieString().then((cookie_str) => {
+        encryptCookieText(cookie_str)
+    });
 }
 
 let encrypt_status_change_button = document.querySelector('.encrypt-status-btn')
@@ -64,6 +71,7 @@ encrypt_status_change_button.onclick = function(e){
     encrypt_symbol.innerText = encrypt_state ? "lock" : "lock_open"
     checkValidJson(null)
     session_text.placeholder = encrypt_state ? "Paste encrypted JSON here" : "Paste cookie JSON here"
+    session_text.value = ""
 }
 
 function getCookieString() {
@@ -96,16 +104,19 @@ copy_button.onclick = function(e) {
 getter_button.onclick = function(e){
     let cookie_str = getCookieString().then((cookie_str) => {
         if (encrypt_state) {
-            let crypt_cookies = CryptoJS.AES.encrypt(cookie_str, passphrase).toString();
-            session_text.value = crypt_cookies
-            console.log(`encrypting with ${passphrase}` );
+            encryptCookieText(cookie_str)
         } else {
             console.log("can you see me now?");
             session_text.value = cookie_str
         }
         checkValidJson(null) 
     });
-       
+}
+
+function encryptCookieText(cookie_str) {
+    let crypt_cookies = CryptoJS.AES.encrypt(cookie_str, passphrase).toString();
+    session_text.value = crypt_cookies
+    console.log(`encrypting with ${passphrase}` );
 }
 
 setter_button.onclick = function(e){

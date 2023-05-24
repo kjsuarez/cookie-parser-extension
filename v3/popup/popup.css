@@ -1,11 +1,13 @@
 
 html {
   font-family: sans-serif;
+  resize: both;
 }
 
 body {
   min-width: 15rem;
   text-align: center;
+  resize: both;
 }
 
 button {
@@ -194,4 +196,8 @@ h4 {
   transform: rotateY(20deg);
 }
 
+.footer-link {
+  color: grey;
+  text-decoration: none;
+}
 /*# sourceMappingURL=popup.css.map */
