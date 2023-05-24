@@ -28,6 +28,9 @@
       <div class="session-div">
         <label for="session_text" id="session-text-label"> cookies for this domain </label>
         <textarea name="session_text" id="session_text" placeholder="Paste cookie JSON here" cols="25" rows="1"></textarea>
+        <span class="material-symbols-outlined copy-button">
+          content_copy
+        </span>
       </div>
 
       <div class="encrypted" hidden>
@@ -38,6 +41,9 @@
 
       <div class="warning-text">
       </div>
+      <div class="notification-text">
+      </div>
+      
       <div>
         <button id="get-button" title="export cookies to text">
           <!-- <span class="material-symbols-outlined">
@@ -74,7 +80,7 @@
             delete
           </span>
         </button>
-        <button id="save-button" title="clear all cookies for this url">
+        <button id="save-button" title="Download cookies as text file">
           <span class="material-symbols-outlined">
             download
             </span>

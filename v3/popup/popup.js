@@ -8,6 +8,8 @@ let upload_button = document.querySelector('#upload-button');
 
 let encrypt_symbol = document.querySelector('.encrypt-symbol')
 let session_text = document.querySelector('#session_text')
+let copy_button = document.querySelector('.copy-button')
+let notification_text = document.querySelector(".notification-text") 
 let warning_text = document.querySelector(".warning-text") 
 
 let passphrase = self.crypto.randomUUID();
@@ -20,6 +22,14 @@ function updatePassphrase(e) {
 
 let encrypt_status_change_button = document.querySelector('.encrypt-status-btn')
 let encrypt_state = false;
+
+function setWarningText(str) {
+    warning_text.innerHTML = str
+}
+
+function setNotificationText(str) {
+    notification_text.innerHTML = str
+}
 
 session_text.addEventListener("keyup", checkValidJson);
 function checkValidJson(e) {
@@ -70,6 +80,18 @@ function getCookieString() {
     });
     return resp
 }
+
+copy_button.onclick = function(e) {
+    navigator.clipboard.writeText(session_text.value).then(
+        () => {
+            setNotificationText("copied to clipboard")
+        },
+        (e) => {
+            setWarningText(e)
+        }
+      );
+} 
+
 
 getter_button.onclick = function(e){
     let cookie_str = getCookieString().then((cookie_str) => {
